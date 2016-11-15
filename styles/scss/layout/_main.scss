@@ -1,0 +1,441 @@
+*,
+*::after,
+*::before {
+  @include box-sizing(border-box);
+}
+
+body {
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  font-family: $sans-serif;
+  font-size: 17px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  min-height: 100vh;
+  text-transform: lowercase;
+
+  @include desktop {
+    flex-direction: row;
+  }
+}
+
+.contain {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: .05rem;
+  margin: 0;
+  text-rendering: optimizelegibility;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.333rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 1.4rem;
+  margin-bottom: .375rem;
+}
+
+h3,
+h4 {
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-family: $serif;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100%;
+  padding: 10px;
+
+  @include desktop {
+    width: 150px;
+  }
+
+  .logo {
+    max-height: 100%;
+  }
+}
+
+section {
+  padding: 50px 15px;
+}
+
+footer {
+  color: lighten($black, 50%);
+  font-size: .9rem;
+  text-align: center;
+}
+
+// nav
+.nav-wrap {
+  // hide nav on mobile
+  display: none;
+
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 20px;
+    position: fixed;
+    top: 200px;
+  }
+  // open nav on mobile when toggled
+  &.open {
+    display: block;
+  }
+}
+
+// main nav pretty styling
+.main-nav {
+  margin: 10px;
+  text-align: center;
+
+  @include desktop {
+    margin: 0;
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: 15px;
+
+    a {
+      @include transition(all ease-in .6s);
+      color: $black;
+      display: block;
+      font-weight: 100;
+      letter-spacing: .1em;
+      padding: 5px;
+
+      &:hover,
+      &:active {
+        color: lighten($black, 40%);
+
+        @include desktop {
+          box-shadow: -5px 0 $black;
+        }
+      }
+    }
+  }
+}
+
+// menu burger on mobile
+.cheeseburger {
+  @include transition(background 300ms);
+  cursor: pointer;
+  display: block;
+  height: 96px;
+  order: 2;
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  width: 96px;
+
+  @include desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+  span {
+    background: $black;
+    display: block;
+    height: 8px;
+    left: 18px;
+    position: absolute;
+    right: 18px;
+    top: 44px;
+
+    &::before,
+    &::after {
+      background-color: $black;
+      content: '';
+      display: block;
+      height: 8px;
+      left: 0;
+      position: absolute;
+      transition: 300ms, 0s;
+      transition-duration: 300ms;
+      width: 100%;
+    }
+
+    &::before {
+      top: -20px;
+      transition-property: top, transform;
+    }
+
+    &::after {
+      bottom: -20px;
+      transition-property: bottom, transform;
+    }
+  }
+
+  // change burger to X when clicked
+  .active {
+
+    span {
+      background: none;
+
+      &:before,
+      &:after {
+        transition-delay: 0s, 300ms;
+      }
+
+      &:before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+// hero
+.hero {
+  background:
+    /* fake gray gradient */
+    linear-gradient(
+      rgba(21, 21, 21, 0.89),
+      rgba(37, 37, 44, 0.95)
+    ),
+    /* image */
+    url('../images/coffee2.jpg');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: left;
+}
+
+// hero text
+.intro-me {
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: bounceDown;
+  margin: 0 auto;
+  padding: 0 3rem;
+
+  @include desktop {
+    width: 55%;
+  }
+
+  h2 {
+    color: $white;
+    font-weight: 200;
+    letter-spacing: .01em;
+    line-height: 2rem;
+    margin: 0;
+
+    span {
+      &:first-child {
+        font-size: 70px;
+        font-weight: 600;
+        line-height: 1;
+      }
+    }
+
+    .front-end {
+      color: darken($orange, 5%);
+      font-weight: 400;
+
+      &:before,
+      &:after {
+        color: $blue;
+      }
+
+      &:before {
+        content: '</ ';
+      }
+
+      &:after {
+        content: ' >';
+      }
+    }
+  }
+}
+
+// projects
+.projects {
+	background-color: $white;
+
+	h3 {
+		text-align: center;
+	}
+
+  .col {
+    margin-bottom: 0;
+    text-align: center;
+
+    a {
+        background-color: rgba(37, 37, 44, 0.95);
+        color: $white;
+        display: block;
+        height: 100%;
+        position: relative;
+
+        .proj-title {
+          bottom: 0;
+          color: $white;
+          cursor: pointer;
+          font-weight: 600;
+          left: 0;
+          opacity: 1;
+          padding: 10px;
+          right: 0;
+          top: 0;
+          width: 100%;
+
+          span {
+            font-family: $serif;
+            font-weight: 300;
+          }
+
+          @include desktop {
+            opacity: 0;
+            padding: 70px 10px;
+            position: absolute;
+            &:hover {
+              background-color: rgba(37, 37, 44, .95);
+              opacity: 1;
+            }
+          }
+        }
+    }
+  }
+}
+
+// about me
+.about {
+  color: $white;
+  padding: 0;
+
+  @include desktop {
+    max-height: 800px;
+    overflow: hidden;
+  }
+
+  ul {
+    text-align: center;
+
+    @include desktop {
+      display: none;
+    }
+
+    li {
+      background-color: lighten($black, 10%);
+      display: inline-block;
+      margin: 0 15px;
+      padding: 0 15px;
+
+      a {
+        color: $white;
+        font-size: 1.6rem;
+
+        &:hover,
+        &:active {
+          color: $orange;
+        }
+      }
+    }
+  }
+
+  .col {
+    margin: 0;
+    padding: 0;
+
+    img {
+      @include desktop {
+        width: auto;
+      }
+    }
+
+    &:first-child {
+      background-color: $black;
+      padding: 30px;
+    }
+
+    &:last-child {
+      max-height: 450px;
+      overflow: hidden;
+
+      @include desktop {
+        max-height: 100%;
+      }
+    }
+  }
+}
+
+// animated skill bars in about section
+.skillbar {
+  @include transition(width .4s linear);
+  background-color: $light-gray;
+  display: block;
+  height: 25px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+
+  .skillbar-title {
+    background-color: darken($blue, 10%);
+    color: $white;
+    font-size: 13px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 170px;
+
+    span {
+    	background: rgba(0, 0, 0, .1);
+    	display: block;
+    	height: 25px;
+    	line-height: 25px;
+    	padding: 0 20px;
+    }
+  }
+
+  .skillbar-bar {
+  	background: $blue;
+  	height: 25px;
+  	width: 0;
+  }
+}

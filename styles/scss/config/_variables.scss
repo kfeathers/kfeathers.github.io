@@ -1,0 +1,20 @@
+// colors
+$black:             #252527;
+$white:             #fff;
+
+$light-gray:        #f8f9fa;
+$gray:              #eaedf2;
+$blue:							#66d9ef;
+$pink:							#f92672;
+$orange:						#fd971f;
+
+
+// font stacks
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto+Slab:300');
+
+$sans-serif:        'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$serif:             'Roboto Slab', Cambria, Times New Roman, Times, serif;
+
+// moble/desktop widths - media queries mixins are located in mixins file
+$tablet-width: 768px;
+$desktop-width: 991px;

@@ -1,0 +1,36 @@
+// Flexbox for the grid
+.grid,
+[class*="grid-"] {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  .col {
+    flex: 0 1 auto;
+    padding: 0 10px;
+  }
+}
+
+// 2 columns
+.grid-2 {
+  .col {
+    width: 100%;
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+}
+
+// 3 columns
+.grid-3 {
+
+  .col {
+    padding-bottom: 20px;
+    width: 50%;
+
+    @include desktop {
+      width: 33.333%;
+    }
+  }
+}
