@@ -174,10 +174,12 @@ footer {
   position: relative;
   text-indent: -9999px;
   width: 96px;
+
   @include desktop {
     display: none;
     visibility: hidden;
   }
+
   &:focus {
     outline: none;
   }
