@@ -51,7 +51,7 @@ gulp.task('scripts', function() {
         //catch errors
         .on('error', gutil.log)
         //where we will store our finalized, compressed script
-        .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('js/min'))
         //notify browserSync to refresh
         .pipe(browserSync.reload({
             stream: true

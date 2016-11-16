@@ -158,22 +158,32 @@ footer {
 
 // menu burger on mobile
 .cheeseburger {
-  @include transition(background 300ms);
+  @include transition(background .3s);
+  appearance: none;
+  background: $white;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   cursor: pointer;
   display: block;
   height: 96px;
+  margin: 0;
   order: 2;
   overflow: hidden;
+  padding: 0;
   position: relative;
   text-indent: -9999px;
   width: 96px;
-
   @include desktop {
     display: none;
     visibility: hidden;
   }
-
+  &:focus {
+    outline: none;
+  }
+  // middle line of burger icon
   span {
+    @include transition(background 0 .3s);
     background: $black;
     display: block;
     height: 8px;
@@ -181,7 +191,7 @@ footer {
     position: absolute;
     right: 18px;
     top: 44px;
-
+    // top and bottom lines of burger icon
     &::before,
     &::after {
       background-color: $black;
@@ -190,8 +200,8 @@ footer {
       height: 8px;
       left: 0;
       position: absolute;
-      transition: 300ms, 0s;
-      transition-duration: 300ms;
+      transition-delay: .3s, 0s;
+      transition-duration: .3s, .3s;
       width: 100%;
     }
 
@@ -207,22 +217,21 @@ footer {
   }
 
   // change burger to X when clicked
-  .active {
-
+  &.active {
     span {
       background: none;
 
-      &:before,
-      &:after {
-        transition-delay: 0s, 300ms;
+      &::before,
+      &::after {
+        transition-delay: 0s, .3s;
       }
 
-      &:before {
+      &::before {
         top: 0;
         transform: rotate(45deg);
       }
 
-      &:after {
+      &::after {
         bottom: 0;
         transform: rotate(-45deg);
       }
@@ -277,16 +286,16 @@ footer {
       color: darken($orange, 5%);
       font-weight: 400;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         color: $blue;
       }
 
-      &:before {
+      &::before {
         content: '</ ';
       }
 
-      &:after {
+      &::after {
         content: ' >';
       }
     }

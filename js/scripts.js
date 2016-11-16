@@ -17,15 +17,9 @@ $(document).ready(function() {
     });
 
     // when user clicks the burger menu icon toggle menu
-    $('.nav-toggle').click(function(event) {
+    $('.cheeseburger').click(function(event) {
         event.preventDefault();
         $(this).toggleClass('active');
-        $('.nav-wrap').toggleClass('open');
-    });
-
-    // when user clicks a link
-    $('.main-nav li a').click(function() {
-        $('.nav-toggle').toggleClass('active');
         $('.nav-wrap').toggleClass('open');
     });
 
