@@ -1,11 +1,19 @@
-// Flexbox for the grid
+// Flexbox for the grid and web prefixes
 .grid,
 [class*="grid-"] {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 auto;
 
   .col {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     padding: 0 10px;
   }
