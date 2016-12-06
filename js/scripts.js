@@ -23,19 +23,11 @@ $(document).ready(function() {
         $('.nav-wrap').toggleClass('open');
     });
 
-    // fire animated skill bars when scrolling after certain point from top
-    $(window).scroll(function() {
-        $('.skillbar').each(function() {
-            var imagePos = $(this).offset().top;
-
-            var topOfWindow = $(window).scrollTop();
-            if (imagePos < topOfWindow + 650) {
-                $(this).find('.skillbar-bar').animate({
-                    width: $(this).attr('data-percent')
-                }, 3000);
-            }
-        });
-
+    // fire animated skill bars
+    $('.skillbar').each(function() {
+        $(this).find('.skillbar-bar').animate({
+            width: $(this).attr('data-percent')
+        }, 3000);
     });
 
 });
